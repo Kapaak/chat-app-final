@@ -1,13 +1,28 @@
 import Login from "../components/Login";
 import { state } from "../globalState";
 import { useSnapshot } from "valtio";
+import styled from "styled-components";
 
 export default function Home() {
 	console.warn("Home, rerendered");
 	return (
-		<div>
-			<h1>username: {useSnapshot(state).username}</h1>
+		<StyledHome>
 			<Login />
-		</div>
+		</StyledHome>
 	);
 }
+
+const StyledHome = styled.div`
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	width: 100%;
+	background: rgb(0, 4, 40);
+	background: linear-gradient(
+		90deg,
+		rgba(0, 4, 40, 1) 0%,
+		rgba(0, 78, 146, 1) 100%
+	);
+`;
