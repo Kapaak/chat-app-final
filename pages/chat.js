@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import Pusher from "pusher-js";
 
 import { state } from "../globalState";
-import ChatWindow from "../components/ChatInput";
+import ChatInput from "../components/ChatPage/ChatInput";
 import styled from "styled-components";
 import { useSnapshot } from "valtio";
+import ChatMessages from "../components/ChatPage/ChatMessages";
+import ChatHeadline from "../components/ChatPage/ChatHeadline";
 
 const Chat = () => {
 	console.warn("Chat, rerendered");
@@ -22,62 +24,27 @@ const Chat = () => {
 
 		channel.bind("chat-update", data => {
 			const { message, username } = data;
-
 			setChat(prevState => [...prevState, { username, message }]);
 		});
 	}, []);
 
-	console.log(username, "Ss");
-
-	//TODO , skoncil jsem u porovnavani pokud ten user jsem ja a nebo ne
 	return (
 		<StyledChat>
 			<StyledChatInner>
-				<h1>Chat room</h1>
+				<ChatHeadline />
 				<StyledChatWindow>
-					{chat.map((c, i) => (
-						<StyledChatMessageRow key={i}>
-							{c.username ===
-								username(
-									<StyledChatMessage color={c.username === toString(username)}>
-										message: {c.message}
-									</StyledChatMessage>
-								)}
-						</StyledChatMessageRow>
-						// <StyledChatMessageRow key={i}>
-						// 	{c.username === username ? (
-						// 		<StyledChatMessage color="#172261">
-						// 			message: {c.message}
-						// 		</StyledChatMessage>
-						// 	) : (
-						// 		<StyledChatMessage color="#969696">
-						// 			message: {c.message}
-						// 		</StyledChatMessage>
-						// 	)}
-						// </StyledChatMessageRow>
-					))}
-					<ChatWindow username={username} />
+					<ChatMessages chat={chat} username={username} />
+					<ChatInput username={username} />
 				</StyledChatWindow>
 			</StyledChatInner>
 		</StyledChat>
 	);
 };
 
-const StyledChatMessageRow = styled.div`
-	display: flex;
-	justify-content: flex-end;
-`;
-
-const StyledChatMessage = styled.p`
-	padding: 0.5rem 1rem;
-	border-radius: 2rem;
-	background-color: ${({ color }) => (color ? "pink" : "wheat")};
-`;
-
 const StyledChatWindow = styled.div`
 	display: flex;
 	flex-direction: column;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	width: 80%;
 	height: 100%;
 	margin: 4rem auto 0 auto;
@@ -97,11 +64,6 @@ const StyledChat = styled.div`
 		rgba(0, 4, 40, 1) 0%,
 		rgba(0, 78, 146, 1) 100%
 	); */
-
-	h1 {
-		background-color: #fcfcfc;
-		padding: 2rem;
-	}
 `;
 
 const StyledChatInner = styled.div`
@@ -109,7 +71,7 @@ const StyledChatInner = styled.div`
 	flex-direction: column;
 	height: 100%;
 	width: 100%;
-	background-color: rgb(233, 233, 233);
+	background-color: var(--f-col);
 	border-radius: 0.2rem;
 `;
 

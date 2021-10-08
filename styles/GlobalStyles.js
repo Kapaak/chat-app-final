@@ -17,4 +17,11 @@ export const GlobalStyles = createGlobalStyle`
         font-family: "Raleway", sans-serif;
     }
 
+    :root{
+       --f-col:#fcfcfc;
+       --s-col:#163cff;
+       --t-col:#ececec;
+       --ff-col:#131313;
+    }
+
 `;
