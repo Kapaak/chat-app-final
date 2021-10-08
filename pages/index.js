@@ -5,6 +5,7 @@ import HomeHeadline from "../components/HomePage/HomeHeadline";
 
 export default function Home() {
 	console.warn("Home, rerendered");
+
 	return (
 		<StyledHome>
 			<div>
@@ -24,4 +25,8 @@ const StyledHome = styled.div`
 	min-height: 100vh;
 	width: 100%;
 	background-color: var(--f-col);
+
+	& > div {
+		width: 38rem;
+	}
 `;
