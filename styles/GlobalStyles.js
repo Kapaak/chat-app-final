@@ -22,6 +22,7 @@ export const GlobalStyles = createGlobalStyle`
        --s-col:#163cff;
        --t-col:#ececec;
        --ff-col:#131313;
+       --fff-col:#BEBEBE;
     }
 
 `;

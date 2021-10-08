@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import Pusher from "pusher-js";
+import styled from "styled-components";
 
 import { state } from "../globalState";
 import ChatInput from "../components/ChatPage/ChatInput";
-import styled from "styled-components";
-import { useSnapshot } from "valtio";
 import ChatMessages from "../components/ChatPage/ChatMessages";
 import ChatHeadline from "../components/ChatPage/ChatHeadline";
 
@@ -44,7 +43,6 @@ const Chat = () => {
 const StyledChatWindow = styled.div`
 	display: flex;
 	flex-direction: column;
-	/* border: 1px solid black; */
 	width: 80%;
 	height: 100%;
 	margin: 4rem auto 0 auto;
@@ -58,12 +56,6 @@ const StyledChat = styled.div`
 	min-height: 100vh;
 	height: 100vh;
 	width: 100%;
-	/* background: rgb(0, 4, 40);
-	background: linear-gradient(
-		90deg,
-		rgba(0, 4, 40, 1) 0%,
-		rgba(0, 78, 146, 1) 100%
-	); */
 `;
 
 const StyledChatInner = styled.div`

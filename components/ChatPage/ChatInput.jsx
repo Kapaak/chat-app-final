@@ -20,7 +20,7 @@ const ChatInput = ({ username }) => {
 				<input
 					type="text"
 					onChange={e => setMessage(e.target.value)}
-					placeholder="type something"
+					placeholder="type something..."
 					value={message}
 				/>
 				<button>
