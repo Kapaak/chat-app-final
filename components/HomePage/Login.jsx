@@ -6,58 +6,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Avatar from "avataaars";
 
+import { state } from "../../globalState";
+import { avatarConfigs } from "../../globalState/globalFunctions";
+
 const Login = () => {
 	console.warn("Login,rerendered");
 
 	const router = useRouter();
 
 	const [login, setLogin] = useState("");
+	const [highlightSelected, setHighlightSelected] = useState(-1);
 
 	const handleSubmit = e => {
 		handleUsernameSubmit(e, login);
 		router.push("/chat");
 	};
 
-	const configPavel = {
-		avatarStyle: "Circle",
-		topType: "ShortHairShortWaved",
-		accessoriesType: "Blank",
-		hairColor: "Black",
-		facialHairType: "Blank",
-		clotheType: "CollarSweater",
-		clotheColor: "Blue03",
-		eyeType: "Default",
-		eyebrowType: "Default",
-		mouthType: "Smile",
-		skinColor: "Light",
-	};
-
-	const configDavid = {
-		avatarStyle: "Circle",
-		topType: "ShortHairShortFlat",
-		accessoriesType: "Blank",
-		hairColor: "Brown",
-		facialHairType: "BeardLight",
-		facialHairColor: "Brown",
-		clotheType: "Overall",
-		clotheColor: "Blue03",
-		eyeType: "Default",
-		eyebrowType: "Default",
-		mouthType: "Default",
-		skinColor: "Light",
-	};
-
-	const configBlondyn = {
-		avatarStyle: "Circle",
-		topType: "NoHair",
-		accessoriesType: "Blank",
-		facialHairType: "Blank",
-		clotheType: "Hoodie",
-		clotheColor: "Black",
-		eyeType: "Default",
-		eyebrowType: "Default",
-		mouthType: "Twinkle",
-		skinColor: "Light",
+	const handleSelectedAvatar = number => {
+		state.selectedAvatar = number;
+		setHighlightSelected(number);
+		console.log("handled");
 	};
 
 	return (
@@ -72,11 +40,17 @@ const Login = () => {
 			</FormItem>
 			<FormItem>
 				<h3>avatar</h3>
-				<div>
-					<Avatar {...configPavel} />
-					<Avatar {...configDavid} />
-					<Avatar {...configBlondyn} />
-				</div>
+				<AvatarsContainer>
+					{avatarConfigs(-1).map((a, i) => (
+						<AvatarWrapper
+							key={i}
+							onClick={() => handleSelectedAvatar(i)}
+							isSelected={highlightSelected - i}
+						>
+							<Avatar {...a} />
+						</AvatarWrapper>
+					))}
+				</AvatarsContainer>
 			</FormItem>
 			<FormButtonWrapper>
 				<FormButton>
@@ -86,6 +60,14 @@ const Login = () => {
 		</form>
 	);
 };
+
+const AvatarsContainer = styled.div`
+	display: flex;
+`;
+
+const AvatarWrapper = styled.div`
+	opacity: ${({ isSelected }) => (isSelected === 0 ? "1" : ".3")};
+`;
 
 const FormButtonWrapper = styled.div`
 	display: flex;
@@ -105,18 +87,31 @@ const FormItem = styled.div`
 		cursor: pointer;
 		width: 8rem;
 		height: 8rem;
+		transition: all 0.2s ease-in-out;
+
+		&:hover {
+			transform: scale(1.2);
+			transition: all 0.2s ease-in-out;
+		}
 	}
 `;
 
 const FormInput = styled.input`
 	background-color: transparent;
 	border: none;
-	border-bottom: 1px solid var(--s-col);
+	border-bottom: 1px solid var(--fff-col);
 	width: 23rem;
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		border-bottom: 1px solid var(--s-col);
+		transition: all 0.2s ease-in-out;
+	}
 
 	&:focus {
+		border-bottom: 1px solid var(--s-col);
+		transition: all 0.2s ease-in-out;
 		outline: none;
-		border-bottom: 2px solid var(--s-col);
 	}
 `;
 
@@ -129,35 +124,19 @@ const FormButton = styled.button`
 	box-shadow: 0 0 32px 2px #c9c9c9;
 	margin-top: 6rem;
 	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		transform: scale(1.05);
+		box-shadow: 0 0 32px 2px #8f91f5b7;
+		transition: all 0.2s ease-in-out;
+	}
 
 	svg {
 		color: var(--f-col);
 		font-size: 2rem;
+		width: 2rem;
 	}
 `;
-
-// const StyledLogin = styled.div`
-// 	background: rgba(255, 255, 255, 0.596);
-// 	border-radius: 0.35rem;
-// 	padding: 2rem;
-
-// 	h1 {
-// 		font-size: 3rem;
-// 		color: #1d1d1d;
-// 	}
-
-// 	input {
-// 		margin: 2rem 1rem 0 0;
-// 		padding: 0.5rem;
-// 	}
-
-// 	button {
-// 		height: 2.9rem;
-// 		padding: 0.5rem;
-// 		cursor: pointer;
-// 		background-color: #eb8d22;
-// 		border: none;
-// 	}
-// `;
 
 export default Login;

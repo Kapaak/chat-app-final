@@ -58,7 +58,7 @@ const StyledLogin = styled.div`
 		background: transparent;
 		color: var(--s-col);
 		cursor: pointer;
-		/* border: 1px solid black; */
+		font-size: 2rem;
 	}
 `;
 

@@ -1,5 +1,4 @@
 import { GlobalStyles } from "../styles/GlobalStyles";
-import UserPanel from "../components/UserPanel";
 import HeadSelector from "../components/Head";
 
 function MyApp({ Component, pageProps }) {
@@ -7,7 +6,6 @@ function MyApp({ Component, pageProps }) {
 		<>
 			<HeadSelector />
 			<GlobalStyles />
-			<UserPanel />
 			<Component {...pageProps} />
 		</>
 	);
