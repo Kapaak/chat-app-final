@@ -7,12 +7,18 @@ export const handleUsernameSubmit = (e, username) => {
 	state.username = username;
 };
 
-export const handleChatSubmit = async (e, username, message) => {
+export const handleChatSubmit = async (
+	e,
+	username,
+	message,
+	selectedAvatar
+) => {
 	e.preventDefault();
 	//sending message and username from state to backend
 	await axios.post("/api/pusher", {
 		message,
 		username,
+		selectedAvatar,
 	});
 };
 

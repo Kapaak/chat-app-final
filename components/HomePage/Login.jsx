@@ -25,7 +25,6 @@ const Login = () => {
 	const handleSelectedAvatar = number => {
 		state.selectedAvatar = number;
 		setHighlightSelected(number);
-		console.log("handled");
 	};
 
 	return (

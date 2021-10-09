@@ -10,7 +10,7 @@ import ChatHeadline from "../components/ChatPage/ChatHeadline";
 const Chat = () => {
 	console.warn("Chat, rerendered");
 	const [chat, setChat] = useState([]);
-	const { username } = state;
+	const { username, selectedAvatar } = state;
 
 	const pusher = new Pusher(process.env.NEXT_PUBLIC_key, {
 		cluster: "eu",
@@ -22,8 +22,11 @@ const Chat = () => {
 		const channel = pusher.subscribe("presence-channel");
 
 		channel.bind("chat-update", data => {
-			const { message, username } = data;
-			setChat(prevState => [...prevState, { username, message }]);
+			const { message, username, selectedAvatar } = data;
+			setChat(prevState => [
+				...prevState,
+				{ username, message, selectedAvatar },
+			]);
 		});
 	}, []);
 
@@ -33,7 +36,7 @@ const Chat = () => {
 				<ChatHeadline />
 				<StyledChatWindow>
 					<ChatMessages chat={chat} username={username} />
-					<ChatInput username={username} />
+					<ChatInput username={username} selectedAvatar={selectedAvatar} />
 				</StyledChatWindow>
 			</StyledChatInner>
 		</StyledChat>

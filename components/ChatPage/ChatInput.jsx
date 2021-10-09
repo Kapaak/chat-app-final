@@ -5,12 +5,12 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 import { handleChatSubmit } from "../../globalState/globalFunctions";
 
-const ChatInput = ({ username }) => {
+const ChatInput = ({ username, selectedAvatar }) => {
 	const [message, setMessage] = useState("");
 	console.log("ChatInput,rerendered");
 
 	const submitHandler = (e, message) => {
-		handleChatSubmit(e, username, message);
+		handleChatSubmit(e, username, message, selectedAvatar);
 		setMessage("");
 	};
 
