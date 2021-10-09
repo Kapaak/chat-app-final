@@ -63,6 +63,8 @@ const Login = () => {
 
 const AvatarsContainer = styled.div`
 	display: flex;
+	max-width: 23rem;
+	overflow: auto;
 `;
 
 const AvatarWrapper = styled.div`

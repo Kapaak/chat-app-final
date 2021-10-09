@@ -57,6 +57,19 @@ export const avatarConfigs = number => {
 			mouthType: "Twinkle",
 			skinColor: "Light",
 		},
+		{
+			avatarStyle: "Circle",
+			topType: "LongHairStraight2",
+			accessoriesType: "Blank",
+			hairColor: "Brown",
+			facialHairType: "Blank",
+			clotheType: "ShirtScoopNeck",
+			clotheColor: "Black",
+			eyeType: "Wink",
+			eyebrowType: "Default",
+			mouthType: "Smile",
+			skinColor: "Light",
+		},
 	];
 	if (number === -1) return configArray;
 	return configArray[number];
