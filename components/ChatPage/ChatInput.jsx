@@ -22,6 +22,7 @@ const ChatInput = ({ username, selectedAvatar }) => {
 					onChange={e => setMessage(e.target.value)}
 					placeholder="type something..."
 					value={message}
+					min="1"
 				/>
 				<button>
 					<FontAwesomeIcon icon={faPaperPlane} />

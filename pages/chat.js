@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Pusher from "pusher-js";
 import styled from "styled-components";
+import Div100vh from "react-div-100vh";
 
 import { state } from "../globalState";
 import ChatInput from "../components/ChatPage/ChatInput";
@@ -51,14 +52,15 @@ const StyledChatWindow = styled.div`
 	margin: 4rem auto 0 auto;
 `;
 
-const StyledChat = styled.div`
+const StyledChat = styled(Div100vh)`
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 100vh;
-	height: 100vh;
+	/* height: 100vh;
 	width: 100%;
+	max-height: 100%;
+	overflow: auto; */
 `;
 
 const StyledChatInner = styled.div`

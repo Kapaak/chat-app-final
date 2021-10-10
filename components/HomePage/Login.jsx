@@ -4,7 +4,7 @@ import { handleUsernameSubmit } from "../../globalState/globalFunctions";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import Avatar from "avataaars";
+import Avatar, { genConfig } from "react-nice-avatar";
 
 import { state } from "../../globalState";
 import { avatarConfigs } from "../../globalState/globalFunctions";
@@ -35,6 +35,7 @@ const Login = () => {
 					type="text"
 					value={login}
 					onChange={e => setLogin(e.target.value)}
+					required
 				/>
 			</FormItem>
 			<FormItem>
@@ -46,7 +47,7 @@ const Login = () => {
 							onClick={() => handleSelectedAvatar(i)}
 							isSelected={highlightSelected - i}
 						>
-							<Avatar {...a} />
+							<StyledAvatar {...genConfig(a)} />
 						</AvatarWrapper>
 					))}
 				</AvatarsContainer>
@@ -60,14 +61,43 @@ const Login = () => {
 	);
 };
 
+const StyledAvatar = styled(Avatar)`
+	cursor: pointer;
+	width: 8rem;
+	height: 8rem;
+	transition: all 0.2s ease-in-out;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 2px solid var(--s-col);
+		border-radius: 50%;
+		z-index: 100;
+	}
+
+	&:hover {
+		transform: scale(1.1);
+		transition: all 0.2s ease-in-out;
+	}
+`;
+
 const AvatarsContainer = styled.div`
 	display: flex;
 	max-width: 23rem;
 	overflow: auto;
+	padding: 2rem 0;
+	gap: 1rem;
 `;
 
 const AvatarWrapper = styled.div`
-	opacity: ${({ isSelected }) => (isSelected === 0 ? "1" : ".3")};
+	position: relative;
+	& > div {
+		opacity: ${({ isSelected }) => (isSelected === 0 ? "1" : ".3")};
+	}
 `;
 
 const FormButtonWrapper = styled.div`
@@ -83,18 +113,6 @@ const FormItem = styled.div`
 	h3 {
 		font-size: 1.8rem;
 	}
-
-	svg {
-		cursor: pointer;
-		width: 8rem;
-		height: 8rem;
-		transition: all 0.2s ease-in-out;
-
-		&:hover {
-			transform: scale(1.2);
-			transition: all 0.2s ease-in-out;
-		}
-	}
 `;
 
 const FormInput = styled.input`
@@ -103,6 +121,8 @@ const FormInput = styled.input`
 	border-bottom: 1px solid var(--fff-col);
 	width: 23rem;
 	transition: all 0.2s ease-in-out;
+	font-family: inherit;
+	font-size: 2.5rem;
 
 	&:hover {
 		border-bottom: 1px solid var(--s-col);

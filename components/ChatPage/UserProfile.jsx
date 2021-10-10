@@ -1,4 +1,4 @@
-import Avatar from "avataaars";
+import Avatar, { genConfig } from "react-nice-avatar";
 import styled from "styled-components";
 import { useSnapshot } from "valtio";
 
@@ -9,7 +9,9 @@ const UserProfile = () => {
 	return (
 		<StyledUserProfile>
 			<div>{useSnapshot(state).username}</div>
-			<StyledAvatar {...avatarConfigs(useSnapshot(state).selectedAvatar)} />
+			<StyledAvatar
+				{...genConfig(avatarConfigs(useSnapshot(state).selectedAvatar))}
+			/>
 		</StyledUserProfile>
 	);
 };

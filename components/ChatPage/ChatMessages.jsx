@@ -1,4 +1,4 @@
-import Avatar from "avataaars";
+import Avatar, { genConfig } from "react-nice-avatar";
 import styled from "styled-components";
 import { avatarConfigs } from "../../globalState/globalFunctions";
 
@@ -7,19 +7,16 @@ const ChatMessages = ({ chat, username }) => {
 	return (
 		<>
 			{chat.map((c, i) => (
-				<div>
-					{/* <h1 style={{ textAlign: "center" }}>{c.username}</h1> */}
-					<StyledChatMessageRow key={i} detectMyChat={detectMyChat(c.username)}>
-						<StyledChatMessage detectMyChat={detectMyChat(c.username)}>
-							{/* <p>{c.username}</p> */}
-							<p>{c.message}</p>
-						</StyledChatMessage>
-						<StyledAvatar
-							{...avatarConfigs(c.selectedAvatar)}
-							detectMyChat={detectMyChat(c.username)}
-						/>
-					</StyledChatMessageRow>
-				</div>
+				<StyledChatMessageRow key={i} detectMyChat={detectMyChat(c.username)}>
+					<StyledChatMessage detectMyChat={detectMyChat(c.username)}>
+						{/* <p>{c.username}</p> */}
+						<p>{c.message}</p>
+					</StyledChatMessage>
+					<StyledAvatar
+						{...genConfig(avatarConfigs(c.selectedAvatar))}
+						detectMyChat={detectMyChat(c.username)}
+					/>
+				</StyledChatMessageRow>
 			))}
 		</>
 	);

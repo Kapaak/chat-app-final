@@ -25,4 +25,23 @@ export const GlobalStyles = createGlobalStyle`
        --fff-col:#BEBEBE;
     }
 
+    ::-webkit-scrollbar {
+		width: 1rem;
+		height: 1rem;
+	}
+	::-webkit-scrollbar-track {
+        background: #dde1f7;
+		
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--s-col);
+	}
+
+    @supports (scrollbar-color: red blue){
+        *{
+            scrollbar-color: var(--s-col) #dde1f7;
+            scrollbar-width:thin;
+        }
+    }
+
 `;
