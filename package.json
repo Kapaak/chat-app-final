@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "git-push": "git add . && git commit -m 'dd' && git push"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

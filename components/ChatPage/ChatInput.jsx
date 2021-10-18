@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 import { handleChatSubmit } from "../../globalState/globalFunctions";
+import { breakpoints } from "../../styles/breakpoints";
 
 const ChatInput = ({ username, selectedAvatar }) => {
 	const [message, setMessage] = useState("");
@@ -33,7 +34,8 @@ const ChatInput = ({ username, selectedAvatar }) => {
 };
 
 const StyledLogin = styled.div`
-	margin-top: auto;
+	margin: auto;
+	width: 80%;
 
 	form {
 		position: relative;
@@ -47,8 +49,8 @@ const StyledLogin = styled.div`
 		flex: 1;
 		height: 4rem;
 		padding: 0 1.5rem;
-		/* border-radius: 2rem; */
 		border: none;
+		font-size: 1.6rem;
 	}
 
 	button {
@@ -60,6 +62,16 @@ const StyledLogin = styled.div`
 		color: var(--s-col);
 		cursor: pointer;
 		font-size: 2rem;
+	}
+
+	@media ${breakpoints.mobile} {
+		form {
+			margin-bottom: 2rem;
+		}
+
+		input {
+			height: 5rem;
+		}
 	}
 `;
 

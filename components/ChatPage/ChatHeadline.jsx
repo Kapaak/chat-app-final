@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import UserProfile from "./UserProfile";
+import { breakpoints } from "../../styles/breakpoints";
 
 const ChatHeadline = () => {
 	const router = useRouter();
@@ -34,6 +35,12 @@ const StyledChatHeadline = styled.div`
 		svg {
 			width: 2rem;
 			font-size: 2rem;
+		}
+	}
+
+	@media ${breakpoints.mobile} {
+		h1 {
+			font-size: 2.2rem;
 		}
 	}
 `;

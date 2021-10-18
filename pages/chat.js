@@ -37,8 +37,8 @@ const Chat = () => {
 				<ChatHeadline />
 				<StyledChatWindow>
 					<ChatMessages chat={chat} username={username} />
-					<ChatInput username={username} selectedAvatar={selectedAvatar} />
 				</StyledChatWindow>
+				<ChatInput username={username} selectedAvatar={selectedAvatar} />
 			</StyledChatInner>
 		</StyledChat>
 	);
@@ -49,7 +49,8 @@ const StyledChatWindow = styled.div`
 	flex-direction: column;
 	width: 80%;
 	height: 100%;
-	margin: 4rem auto 0 auto;
+	margin: 4rem auto;
+	overflow-y: auto;
 `;
 
 const StyledChat = styled(Div100vh)`
@@ -57,10 +58,6 @@ const StyledChat = styled(Div100vh)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* height: 100vh;
-	width: 100%;
-	max-height: 100%;
-	overflow: auto; */
 `;
 
 const StyledChatInner = styled.div`
