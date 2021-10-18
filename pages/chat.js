@@ -48,7 +48,8 @@ const StyledChatWindow = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 80%;
-	height: 100%;
+	/* height: 100%; */
+	flex: 1;
 	margin: 4rem auto;
 	overflow-y: auto;
 `;
