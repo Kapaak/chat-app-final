@@ -49,7 +49,14 @@ export const GlobalStyles = createGlobalStyle`
   textarea:focus,
   input:focus {
     font-size: 16px;
-    background: #d31212;
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  select,
+  textarea,
+  input {
+    font-size: 16px;
   }
 }
 
