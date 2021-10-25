@@ -8,7 +8,6 @@ import { breakpoints } from "../../styles/breakpoints";
 
 const ChatInput = ({ username, selectedAvatar }) => {
 	const [message, setMessage] = useState("");
-	console.log("ChatInput,rerendered");
 
 	const submitHandler = (e, message) => {
 		handleChatSubmit(e, username, message, selectedAvatar);
@@ -25,6 +24,7 @@ const ChatInput = ({ username, selectedAvatar }) => {
 					value={message}
 					min="1"
 				/>
+
 				<button>
 					<FontAwesomeIcon icon={faPaperPlane} />
 				</button>
@@ -32,6 +32,7 @@ const ChatInput = ({ username, selectedAvatar }) => {
 		</StyledLogin>
 	);
 };
+//https://reactjsexample.com/a-tiny-library-to-use-emojis-in-react/
 
 const StyledLogin = styled.div`
 	margin: auto;

@@ -44,7 +44,7 @@ export const GlobalStyles = createGlobalStyle`
         }
     }
 
-    @media screen and (-webkit-min-device-pixel-ratio:0) { 
+    /* @media screen and (-webkit-min-device-pixel-ratio:0) { 
   select:focus,
   textarea:focus,
   input:focus {
@@ -58,6 +58,6 @@ export const GlobalStyles = createGlobalStyle`
   input {
     font-size: 16px;
   }
-}
+} */
 
 `;
