@@ -6,3 +6,6 @@ export { Section } from "./Section";
 export { MainHeadline } from "./MainHeadline";
 export { MainSubHeadline } from "./MainSubHeadline";
 export { Modal } from "./Modal";
+export { CloseButton } from "./CloseButton";
+export { Form } from "./Form";
+export { ErrorMessage } from "./ErrorMessage";

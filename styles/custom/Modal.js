@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { Button } from ".";
-
 export const Modal = styled.div`
 	display: ${({ shouldOpen }) => (shouldOpen ? "block" : "none")};
 	position: absolute;
@@ -14,45 +12,13 @@ export const Modal = styled.div`
 	border-radius: 1rem;
 	width: 100%;
 
-	.close{
-		position:absolute;
-		right:1.5rem;
-		top:1.5rem;
-		display:flex;
-		flex-direction:column;
-		justify-content:center;
-		height:1rem;
-
-		p{
-			width:2rem;
-			height:.2rem;
-			background-color:var(--ff-col);
-			
-			&:first-child{
-				transform:translateY(.2rem) rotate(45deg);
-			}
-			
-			&:last-child{
-				transform:rotate(-45deg);
-			}
-		}
-	}
-
-	h1 {
-		font-size: var(--main-headline);
-	}
-
-	h2 {
-		font-size: var(--main-subheadline);
-		color: var(--fff-col);
-		font-weight: 500;
-	}
-
-	form {
+	& > button {
 		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		margin-top: 3rem;
+		align-items: center;
+		justify-content: center;
+		margin-top: 0.5rem;
+		padding-left: 0;
+		gap: 0.8rem;
 	}
 
 	svg {
@@ -75,31 +41,6 @@ export const Modal = styled.div`
 		p:last-of-type {
 			cursor: pointer;
 			color: var(--s-col);
-		}
-	}
-
-	label {
-		font-size: var(--small-text);
-		font-weight: 500;
-	}
-
-	input {
-		border: 1px solid var(--ss-col);
-		height: 3rem;
-		border-radius: 0.5rem;
-		padding: 0.4rem 0.5rem;
-	}
-
-	${Button} {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 4rem;
-		padding-left: 0;
-		margin-top: 0.5rem;
-
-		svg {
-			margin-right: 0.8rem;
 		}
 	}
 `;
