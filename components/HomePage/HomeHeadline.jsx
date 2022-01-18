@@ -1,26 +1,17 @@
+//libraries
 import styled from "styled-components";
+//components
+import { MainHeadline, MainSubHeadline } from "@/styles";
 
 const HomeHeadline = () => {
 	return (
 		<StyledHomeHeadline>
-			<h1>Welcome</h1>
-			<h2>sign in & choose avatar to continue</h2>
+			<MainHeadline>Welcome to Secret_chat</MainHeadline>
+			<MainSubHeadline>Sign in and chat all day !</MainSubHeadline>
 		</StyledHomeHeadline>
 	);
 };
 
-const StyledHomeHeadline = styled.div`
-	h1 {
-		font-size: 4.5rem;
-		font-weight: 700;
-		line-height: 1.4;
-	}
-
-	h2 {
-		color: var(--fff-col);
-		font-weight: 300;
-		font-size: 1.8rem;
-	}
-`;
+const StyledHomeHeadline = styled.div``;
 
 export default HomeHeadline;

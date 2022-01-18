@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import Pusher from "pusher-js";
 import styled from "styled-components";
 import Div100vh from "react-div-100vh";
 
-import { state } from "../globalState";
+import { state } from "../libs/valtio";
 import ChatInput from "../components/ChatPage/ChatInput";
 import ChatMessages from "../components/ChatPage/ChatMessages";
 import ChatHeadline from "../components/ChatPage/ChatHeadline";
@@ -12,24 +11,6 @@ const Chat = () => {
 	console.warn("Chat, rerendered");
 	const [chat, setChat] = useState([]);
 	const { username, selectedAvatar } = state;
-
-	const pusher = new Pusher(process.env.NEXT_PUBLIC_key, {
-		cluster: "eu",
-		authEndpoint: "api/pusher/auth",
-		auth: { params: { username } },
-	});
-
-	useEffect(() => {
-		const channel = pusher.subscribe("presence-channel");
-
-		channel.bind("chat-update", data => {
-			const { message, username, selectedAvatar } = data;
-			setChat(prevState => [
-				...prevState,
-				{ username, message, selectedAvatar },
-			]);
-		});
-	}, []);
 
 	return (
 		<StyledChat>

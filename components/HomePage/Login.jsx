@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { handleUsernameSubmit } from "../../globalState/globalFunctions";
+import { handleUsernameSubmit } from "../../libs/valtio/globalFunctions";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Avatar, { genConfig } from "react-nice-avatar";
 
-import { state } from "../../globalState";
-import { avatarConfigs } from "../../globalState/globalFunctions";
+import { state } from "../../libs/valtio";
+import { avatarConfigs } from "../../libs/valtio/globalFunctions";
 
 const Login = () => {
 	console.warn("Login,rerendered");

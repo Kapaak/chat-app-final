@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@/styles": ["styles/custom/index.js"],
+        "@/components/*" : ["components/*"],
+        "@/global":["libs/valtio/index.js"]
+      }
+    }
+}

@@ -1,32 +1,23 @@
-import Login from "../components/HomePage/Login";
+//libraries
 import styled from "styled-components";
-
-import HomeHeadline from "../components/HomePage/HomeHeadline";
+//components
+import HomePage from "@/components/HomePage";
+import Navigation from "@/components/HomePage/Navigation";
+import Footer from "@/components/HomePage/Footer";
+import { Section } from "@/styles";
 
 export default function Home() {
 	console.warn("Home, rerendered");
 
 	return (
-		<StyledHome>
-			<div>
-				<HomeHeadline />
-				<Login />
-			</div>
-		</StyledHome>
+		<SHome>
+			<Navigation />
+
+			<HomePage />
+
+			<Footer />
+		</SHome>
 	);
 }
 
-const StyledHome = styled.div`
-	position: relative;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: center;
-	min-height: 100vh;
-	width: 100%;
-	background-color: var(--f-col);
-
-	& > div {
-		width: 38rem;
-	}
-`;
+const SHome = styled(Section)``;

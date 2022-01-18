@@ -2,8 +2,8 @@ import Avatar, { genConfig } from "react-nice-avatar";
 import styled from "styled-components";
 import { useSnapshot } from "valtio";
 
-import { state } from "../../globalState";
-import { avatarConfigs } from "../../globalState/globalFunctions";
+import { state } from "../../libs/valtio";
+import { avatarConfigs } from "../../libs/valtio/globalFunctions";
 
 const UserProfile = () => {
 	return (

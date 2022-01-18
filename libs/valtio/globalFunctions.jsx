@@ -15,11 +15,11 @@ export const handleChatSubmit = async (
 ) => {
 	e.preventDefault();
 	//sending message and username from state to backend
-	await axios.post("/api/pusher", {
-		message,
-		username,
-		selectedAvatar,
-	});
+	// await axios.post("/api/pusher", {
+	// 	message,
+	// 	username,
+	// 	selectedAvatar,
+	// });
 };
 
 export const avatarConfigs = number => {

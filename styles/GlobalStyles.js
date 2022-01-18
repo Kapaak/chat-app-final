@@ -14,15 +14,34 @@ export const GlobalStyles = createGlobalStyle`
 
     body{
         font-size: 1.6rem;
-        font-family: "Raleway", sans-serif;
+        font-family: "Karla", sans-serif;
+	      background-color: var(--f-col);
     }
 
     :root{
        --f-col:#fcfcfc;
-       --s-col:#163cff;
+       --s-col:#5D33E6;
+       --ss-col:#E8E2F9;
        --t-col:#ececec;
        --ff-col:#131313;
        --fff-col:#BEBEBE;
+
+       --shadow: 0 0 2.2px rgba(0, 0, 0, 0.034),
+0 0 5.3px rgba(0, 0, 0, 0.048),
+0 0 10px rgba(0, 0, 0, 0.06),
+0 0 17.9px rgba(0, 0, 0, 0.0652),
+0 0 33.4px rgba(0, 0, 0, 0.080);
+
+       --light-gray:#E8E7E7;
+       --small-text:1.35rem;
+
+
+      --main-headline:4rem;
+      --main-subheadline:1.9rem;
+      --text:1.6rem;
+
+       --max-width:133rem;
+       --side-padding:0 2rem;
     }
 
     ::-webkit-scrollbar {

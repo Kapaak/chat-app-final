@@ -1,6 +1,6 @@
 import Avatar, { genConfig } from "react-nice-avatar";
 import styled from "styled-components";
-import { avatarConfigs } from "../../globalState/globalFunctions";
+import { avatarConfigs } from "../../libs/valtio/globalFunctions";
 import Emojify from "react-emojione";
 
 const ChatMessages = ({ chat, username }) => {

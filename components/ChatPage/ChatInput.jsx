@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
-import { handleChatSubmit } from "../../globalState/globalFunctions";
+import { handleChatSubmit } from "../../libs/valtio/globalFunctions";
 import { breakpoints } from "../../styles/breakpoints";
 
 const ChatInput = ({ username, selectedAvatar }) => {
