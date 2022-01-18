@@ -83,6 +83,7 @@ export const SignInModal = () => {
 			<Button variant="borderless" onClick={() => onSubmitGmail()}>
 				<FontAwesomeIcon icon={faGoogle} /> Sign up with Google account
 			</Button>
+			{/* tady tohle by slo udelat jako ModalBottom component, kde bych vlozil array a to by se vytvorilo */}
 
 			<div className="hr"></div>
 			<div className="underline">
@@ -90,7 +91,7 @@ export const SignInModal = () => {
 				<p>Reset</p>
 			</div>
 			<div className="underline">
-				<p>Don't have an account?</p>
+				<p>Don&apos;t have an account?</p>
 				<p onClick={() => router.push("/?action=sign-up")}>Sign up</p>
 			</div>
 		</Modal>
