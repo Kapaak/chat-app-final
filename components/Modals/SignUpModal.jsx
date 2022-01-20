@@ -9,6 +9,8 @@ import {
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "libs/firebase";
 
 const SignUpModal = () => {
 	const [open, setOpen] = useState(false);
@@ -28,6 +30,13 @@ const SignUpModal = () => {
 
 	const onSubmit = data => {
 		console.log(data, "data from register signup");
+		createUserWithEmailAndPassword(auth, data.email, data.password)
+			.then(e => {
+				console.log(e, "passed");
+			})
+			.catch(e => {
+				console.log(e, "error");
+			});
 	};
 
 	return (
@@ -47,6 +56,13 @@ const SignUpModal = () => {
 				<Button type="submit" variant="submit">
 					Create your free account
 				</Button>
+
+				<div className="hr"></div>
+
+				<div className="underline">
+					<p>Already registered?</p>
+					<p>Sign up</p>
+				</div>
 			</Form>
 		</Modal>
 	);
