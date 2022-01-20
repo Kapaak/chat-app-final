@@ -3,9 +3,8 @@ import Div100 from "react-div-100vh";
 
 //components
 import { Flex, MaxWidth } from "@/styles";
-import { SignInModal } from "../Modals";
+import { ResetPasswordModal, SignInModal, SignUpModal } from "../Modals";
 import HomeHeadline from "./HomeHeadline";
-import SignUpModal from "../Modals/SignUpModal";
 
 const HomePage = () => {
 	return (
@@ -14,6 +13,7 @@ const HomePage = () => {
 				<Flex align="center">
 					<SignInModal />
 					<SignUpModal />
+					<ResetPasswordModal />
 					<HomeHeadline />
 				</Flex>
 			</MaxWidth>

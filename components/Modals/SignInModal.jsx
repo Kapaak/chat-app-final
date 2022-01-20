@@ -4,11 +4,6 @@ import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useRouter } from "next/router";
-import {
-	signInWithEmailAndPassword,
-	signInWithPopup,
-	GoogleAuthProvider,
-} from "firebase/auth";
 //components
 import {
 	Modal,
@@ -20,13 +15,15 @@ import {
 	ErrorMessage,
 } from "@/styles";
 //others
-import { auth } from "../../libs/firebase";
+import {
+	onEmailPasswordSubmit,
+	onGmailSubmit,
+} from "libs/firebase/helperFunctions";
 
 export const SignInModal = () => {
 	const [open, setOpen] = useState(false);
 	const [errMessage, setErrMessage] = useState("");
 	const router = useRouter();
-	const provider = new GoogleAuthProvider();
 
 	useEffect(() => {
 		if (router.query.action === "sign-in") setOpen(true);
@@ -40,26 +37,7 @@ export const SignInModal = () => {
 	} = useForm();
 
 	const onSubmit = data => {
-		signInWithEmailAndPassword(auth, data.username, data.password)
-			.then(e => {
-				setErrMessage("");
-				router.push("/");
-			})
-			.catch(e => {
-				setErrMessage("invalid username or password");
-			});
-	};
-
-	const onSubmitGmail = () => {
-		signInWithPopup(auth, provider)
-			.then(e => {
-				router.push("/");
-				const credential = GoogleAuthProvider.credentialFromResult(e);
-				console.log(e, credential);
-			})
-			.catch(e => {
-				console.log(e.message);
-			});
+		onEmailPasswordSubmit(data, setErrMessage, router);
 	};
 
 	return (
@@ -74,25 +52,23 @@ export const SignInModal = () => {
 				<label htmlFor="">password</label>
 				<input type="password" {...register("password", { required: true })} />
 				<ErrorMessage>{errMessage.length > 0 && errMessage}</ErrorMessage>
-				{/* {errors.password && <span>This field is required</span>} */}
 				<Button type="submit" variant="submit">
 					Sign in
 				</Button>
 			</Form>
 
-			<Button variant="borderless" onClick={() => onSubmitGmail()}>
+			<Button variant="borderless" onClick={() => onGmailSubmit()}>
 				<FontAwesomeIcon icon={faGoogle} /> Sign up with Google account
 			</Button>
-			{/* tady tohle by slo udelat jako ModalBottom component, kde bych vlozil array a to by se vytvorilo */}
 
 			<div className="hr"></div>
 			<div className="underline">
 				<p>Forgot password?</p>
-				<p>Reset</p>
+				<p onClick={() => router.push("?action=reset-password")}>Reset</p>
 			</div>
 			<div className="underline">
 				<p>Don&apos;t have an account?</p>
-				<p onClick={() => router.push("/?action=sign-up")}>Sign up</p>
+				<p onClick={() => router.push("?action=sign-up")}>Sign up</p>
 			</div>
 		</Modal>
 	);

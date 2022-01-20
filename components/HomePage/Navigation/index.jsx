@@ -11,7 +11,7 @@ const Navigation = () => {
 		<Nav>
 			<MaxWidth>
 				<Flex justify="space-between" align="center">
-					<Logo>Secret_chat</Logo>
+					<Logo onClick={() => router.push("/")}>Secret_chat</Logo>
 					<SignMethods>
 						<Button
 							variant="borderless"

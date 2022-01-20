@@ -1,22 +1,24 @@
+//libraries
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+//components
 import {
 	Button,
 	CloseButton,
+	ErrorMessage,
 	Form,
 	MainHeadline,
 	MainSubHeadline,
 	Modal,
 } from "@/styles";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "libs/firebase";
+//others
+import { onCreateUserWithEmailAndPassword } from "libs/firebase/helperFunctions";
 
-const SignUpModal = () => {
+export const SignUpModal = () => {
 	const [open, setOpen] = useState(false);
 	const [errMessage, setErrMessage] = useState("");
 	const router = useRouter();
-
 	const {
 		register,
 		handleSubmit,
@@ -29,14 +31,7 @@ const SignUpModal = () => {
 	}, [router.query]);
 
 	const onSubmit = data => {
-		console.log(data, "data from register signup");
-		createUserWithEmailAndPassword(auth, data.email, data.password)
-			.then(e => {
-				console.log(e, "passed");
-			})
-			.catch(e => {
-				console.log(e, "error");
-			});
+		onCreateUserWithEmailAndPassword(data, setErrMessage, router);
 	};
 
 	return (
@@ -52,7 +47,7 @@ const SignUpModal = () => {
 				<input type="email" {...register("email", { required: true })} />
 				<label>password</label>
 				<input type="password" {...register("password", { required: true })} />
-
+				<ErrorMessage>{errMessage.length > 0 && errMessage}</ErrorMessage>
 				<Button type="submit" variant="submit">
 					Create your free account
 				</Button>
@@ -61,11 +56,9 @@ const SignUpModal = () => {
 
 				<div className="underline">
 					<p>Already registered?</p>
-					<p>Sign up</p>
+					<p onClick={() => router.push("/?action=sign-in")}>Sign in</p>
 				</div>
 			</Form>
 		</Modal>
 	);
 };
-
-export default SignUpModal;
