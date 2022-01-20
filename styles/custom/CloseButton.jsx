@@ -18,6 +18,7 @@ const SCloseButton = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	height: 1rem;
+	cursor: pointer;
 
 	p {
 		width: 2rem;

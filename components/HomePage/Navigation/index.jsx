@@ -19,7 +19,9 @@ const Navigation = () => {
 						>
 							sign in
 						</Button>
-						<Button onClick={() => router.push("/")}>sign up</Button>
+						<Button onClick={() => router.push("?action=sign-up")}>
+							sign up
+						</Button>
 					</SignMethods>
 				</Flex>
 			</MaxWidth>
