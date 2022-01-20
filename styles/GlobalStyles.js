@@ -34,7 +34,7 @@ export const GlobalStyles = createGlobalStyle`
 
        --light-gray:#E8E7E7;
        --small-text:1.35rem;
-       --button-text:1.5rem;
+       --button-text:1.45rem;
 
 
       --main-headline:4rem;
