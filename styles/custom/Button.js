@@ -13,6 +13,6 @@ export const Button = styled.button`
 	border: none;
 	border-radius: 0.4rem;
 	padding: 0.6rem 1rem;
-
+	font-size: var(--button-text);
 	cursor: pointer;
 `;
