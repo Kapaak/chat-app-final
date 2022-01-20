@@ -4,6 +4,7 @@ import {
 	sendPasswordResetEmail,
 	signInWithEmailAndPassword,
 	signInWithPopup,
+	updateProfile,
 } from "firebase/auth";
 import { auth } from ".";
 
@@ -32,7 +33,7 @@ export const onGmailSubmit = () => {
 };
 
 export const onEmailPasswordSubmit = (data, setErrMessage, router) => {
-	console.log(data, "data");
+	console.log(auth.currentUser, "data");
 	signInWithEmailAndPassword(auth, data.username, data.password)
 		.then(e => {
 			setErrMessage("");
@@ -52,6 +53,10 @@ export const onCreateUserWithEmailAndPassword = (
 		.then(e => {
 			router.push("/");
 			setErrMessage("");
+			//diky tomuhle nemusim ty usery ukladat v databazi a muzu rovnou pouzivat jejich jmena z currentUser.displayName
+			updateProfile(auth.currentUser, {
+				displayName: data.username,
+			});
 		})
 		.catch(e => {
 			setErrMessage("email is already registered");
