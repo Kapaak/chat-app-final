@@ -3,9 +3,14 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 //components
 import { Button, Flex, Logo, MaxWidth } from "@/styles";
+import Profile from "./Profile";
+import { useSnapshot } from "valtio";
+import { state } from "../../../libs/valtio";
 
 const Navigation = () => {
 	const router = useRouter();
+	const globalState = useSnapshot(state);
+	console.log(globalState);
 	//je mozny, ze bych mohl udelat navigation pro vsechny a podle route bych zjistoval kde jsem a podle toho zobrazoval
 	return (
 		<Nav>
@@ -23,6 +28,8 @@ const Navigation = () => {
 							sign up
 						</Button>
 					</SignMethods>
+					<p>{globalState.username}</p>
+					<Profile />
 				</Flex>
 			</MaxWidth>
 		</Nav>

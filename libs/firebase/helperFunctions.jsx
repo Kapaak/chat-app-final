@@ -7,6 +7,7 @@ import {
 	updateProfile,
 } from "firebase/auth";
 import { auth } from ".";
+import { state } from "../valtio/index";
 
 export const onPasswordReset = (email, router) => {
 	sendPasswordResetEmail(auth, email)
@@ -38,6 +39,7 @@ export const onEmailPasswordSubmit = (data, setErrMessage, router) => {
 		.then(e => {
 			setErrMessage("");
 			router.push("/");
+			state.username = auth.currentUser.displayName;
 		})
 		.catch(e => {
 			setErrMessage("invalid username or password");
@@ -53,9 +55,11 @@ export const onCreateUserWithEmailAndPassword = (
 		.then(e => {
 			router.push("/");
 			setErrMessage("");
+			//do photo url budu vkladat jakyho avatara maji
 			//diky tomuhle nemusim ty usery ukladat v databazi a muzu rovnou pouzivat jejich jmena z currentUser.displayName
 			updateProfile(auth.currentUser, {
 				displayName: data.username,
+				photoURL: "1",
 			});
 		})
 		.catch(e => {
